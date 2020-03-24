@@ -32,7 +32,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--  springcloud cloud Hoxton.SR1   -->
+            <!--springcloud cloud Hoxton.SR1-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
