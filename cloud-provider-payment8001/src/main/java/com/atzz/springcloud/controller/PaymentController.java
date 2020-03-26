@@ -5,12 +5,9 @@ import com.atzz.springcloud.entities.Payment;
 import com.atzz.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author tianhuiwen
@@ -45,7 +42,7 @@ public class PaymentController {
         Payment paymentById = paymentService.getPaymentById(id);
         log.info("查询结果:" + paymentById);
         if (paymentById != null) {
-            return new CommonResult(200, "查询成功,serverPort: "+ serverPort, paymentById);
+            return new CommonResult(200, "查询成功,serverPort: " + serverPort, paymentById);
         } else {
             return new CommonResult(444, "没有对应记录，查询id:" + id, null);
         }
