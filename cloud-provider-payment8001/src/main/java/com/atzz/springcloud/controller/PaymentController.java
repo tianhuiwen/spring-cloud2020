@@ -3,6 +3,8 @@ package com.atzz.springcloud.controller;
 import com.atzz.springcloud.entities.CommonResult;
 import com.atzz.springcloud.entities.Payment;
 import com.atzz.springcloud.service.PaymentService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ import javax.annotation.Resource;
  * @date 2020/3/24 17:43
  */
 @RestController
+@Api(value = "数据质量监控")
 @Slf4j
 public class PaymentController {
 
@@ -27,6 +30,7 @@ public class PaymentController {
     private DiscoveryClient discoveryClient;*/
 
     @PostMapping(value = "/payment/create")
+    @ApiOperation(value = "数据质量监控-漏报列表", notes = "数据质量监控-漏报列表")
     public CommonResult create(@RequestBody Payment payment) {
         int result = paymentService.create(payment);
         log.info("插入结果:" + result);
@@ -38,6 +42,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/payment/get/{id}")
+    @ApiOperation(value = "数据质量监控-导出", notes = "数据质量监控-导出")
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
         Payment paymentById = paymentService.getPaymentById(id);
         log.info("查询结果:" + paymentById);
