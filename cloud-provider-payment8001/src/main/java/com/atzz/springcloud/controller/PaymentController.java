@@ -7,9 +7,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author tianhuiwen
@@ -26,8 +28,8 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-   /* @Resource
-    private DiscoveryClient discoveryClient;*/
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "/payment/create")
     @ApiOperation(value = "数据质量监控-漏报列表", notes = "数据质量监控-漏报列表")
@@ -51,6 +53,12 @@ public class PaymentController {
         } else {
             return new CommonResult(444, "没有对应记录，查询id:" + id, null);
         }
+    }
+
+    @GetMapping(value = "/playment/discovery")
+    public Object discovery(){
+        List<String> services = discoveryClient.getServices();
+        return services;
     }
 
 }
