@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author tianhuiwen
@@ -59,6 +60,12 @@ public class PaymentController {
     public Object discovery(){
         List<String> services = discoveryClient.getServices();
         return services;
+    }
+
+    @GetMapping(value = "/payment/feign/timeout")
+    public String paymentFeignTimeOut() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(3);
+        return serverPort;
     }
 
 }
