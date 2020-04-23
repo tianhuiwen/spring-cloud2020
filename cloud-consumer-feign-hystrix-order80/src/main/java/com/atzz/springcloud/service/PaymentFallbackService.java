@@ -1,9 +1,12 @@
 package com.atzz.springcloud.service;
 
+import org.springframework.stereotype.Service;
+
 /**
  * @author tianhuiwen
  * @date 2020/4/21 17:47
  */
+@Service
 public class PaymentFallbackService implements PaymentHystrixService {
 
     @Override
