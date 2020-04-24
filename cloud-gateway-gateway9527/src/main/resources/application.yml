@@ -11,12 +11,12 @@ spring:
       #          lower-case-service-id: true
       routes:
         - id: payment_routh
-          #          uri: http://localhost:8001
+          #uri: http://localhost:8001
           uri: lb://cloud-payment-service #此处如果有问题，请注意依赖spring-cloud-starter-netflix-eureka-client依赖不能错
           predicates:
             - Path=/payment/get/**
         - id: payment_routh2
-          #          uri: http://localhost:8001
+          #uri: http://localhost:8001
           uri: lb://cloud-payment-service
           predicates:
             - Path=/payment/lb/**
