@@ -11,15 +11,16 @@ spring:
           environment: #环境配置
             spring:
               rabbitmq:
-                host: 192.168.0.16
+                host: 192.168.2.199
                 port: 5672
-                username: guest
-                password: guest
+                username: admin
+                password: admin
       bindings: # 服务的整合处理
         output: # 名字是一个通道的名称
           destination: studyExchange # 表示要使用的Exchange名称定义
           content-type: application/json # 设置消息类型，本次为json
           binder: defaultRabbit #设置要绑定的消息服务的具体设置
+
 eureka:
   client:
     service-url:
